@@ -2,7 +2,7 @@ window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
     const heroImage = document.querySelector('.hero-image img');
 
-    // Cambiar la barra de navegación al hacer scroll
+    // 1. Barra de navegación
     if (window.scrollY > 50) {
         navbar.style.background = '#000';
         navbar.style.padding = '10px 50px';
@@ -11,55 +11,52 @@ window.addEventListener('scroll', function() {
         navbar.style.padding = '20px 50px';
     }
 
-    // Efecto de desvanecimiento para la imagen del juego
-    // Puedes ajustar el divisor '400' para que el efecto sea más rápido o lento.
-    // Un número mayor = el efecto de desvanecimiento tarda más.
-    const maxScroll = 400; 
-    let opacity = 1 - (window.scrollY / maxScroll);
-
-    // Asegurarse de que la opacidad esté entre 0 y 1
-    if (opacity < 0) {
-        opacity = 0;
-    } else if (opacity > 1) {
-        opacity = 1;
+    // 2. Desvanecimiento de imagen (solo si existe la imagen)
+    if (heroImage) {
+        const maxScroll = 500; 
+        let opacity = 1 - (window.scrollY / maxScroll);
+        heroImage.style.opacity = Math.max(0, Math.min(1, opacity));
     }
-
-    heroImage.style.opacity = opacity;
 });
-// Seleccionamos todos los links de navegación
-const navLinks = document.querySelectorAll('.nav-item');
 
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault(); // Evita que la página recargue
-        const section = e.target.getAttribute('data-section');
-        
-        // Efecto visual de clic
-        console.log("Navegando a: " + section);
-        
-        // Si es "noticias", podemos hacer scroll suave hasta la sección de noticias
-        if(section === 'noticias') {
-            document.querySelector('.news-section').scrollIntoView({
+// 3. SCROLL SUAVE PARA TODOS LOS LINKS (Esto soluciona lo de tu botón)
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+            e.preventDefault();
+            targetElement.scrollIntoView({
                 behavior: 'smooth'
             });
-        } else {
-            alert("Esta sección de " + section + " estará disponible próximamente.");
         }
     });
 });
+/* --- LÓGICA DE REVELACIÓN AL SCROLL --- */
 
-// Hacer que el botón principal también funcione
-const mainBtn = document.querySelector('.btn-main');
-mainBtn.addEventListener('click', () => {
-    window.open('', '_blank'); 
-    // Esto abrirá el trailer oficial en una pestaña nueva
-});
-// Smooth Scroll para los links de la navegación
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+function reveal() {
+    // Seleccionamos todos los elementos con la clase "reveal"
+    const reveals = document.querySelectorAll(".reveal");
+
+    reveals.forEach(element => {
+        // Obtenemos la posición del elemento respecto a la ventana
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150; // Punto de "activación" (píxeles desde el borde inferior)
+
+        // Si el elemento entra en la zona visible, añadimos la clase "active"
+        if (elementTop < windowHeight - elementVisible) {
+            element.classList.add("active");
+        } else {
+            // Opcional: Quitar la clase si quieres que se vuelva a animar al subir
+            // element.classList.remove("active");
+        }
     });
-});
+}
+
+// Ejecutamos la función una vez al cargar por si hay elementos ya visibles
+reveal();
+
+// Ejecutamos la función cada vez que se hace scroll
+window.addEventListener("scroll", reveal);
