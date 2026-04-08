@@ -57,52 +57,47 @@ body {
     align-items: center; /* Centra verticalmente el contenido */
     padding: 0 10%; /* Usamos porcentaje para mejor adaptabilidad */
 }
-
+/* Este es el contenedor grande que divide IZQUIERDA (texto) y DERECHA (imagen) */
 .hero-content {
     display: flex;
-    justify-content: space-between; /* Separa el texto de la imagen al máximo */
-    align-items: center; /* Centra verticalmente texto e imagen entre sí */
+    flex-direction: row; /* Asegura que el grupo de texto e imagen estén lado a lado */
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    gap: 50px; /* Espacio de seguridad entre texto e imagen */
 }
 
+/* Este es el grupo que envuelve el H1, el P y el Botón */
 .text-group {
-    flex: 1; /* El texto ocupa el espacio que necesite */
-    max-width: 600px; /* Evitamos que el texto se estire demasiado en pantallas anchas */
+    display: flex;
+    flex-direction: column; /* ¡ESTA ES LA CLAVE! Pone los elementos uno arriba del otro */
+    align-items: flex-start; /* Alinea el texto y botón a la izquierda */
+    flex: 1;
+    max-width: 50%; /* Para que no invada el espacio de la imagen */
 }
 
 .hero-content h1 {
     font-size: 4rem;
-    margin-bottom: 15px;
-    line-height: 1.1; /* Ajustamos el interlineado para títulos grandes */
+    margin-bottom: 10px; /* Espacio abajo del título */
+    color: white;
 }
 
 .hero-content p {
     font-size: 1.2rem;
-    margin-bottom: 30px;
-    font-family: sans-serif; /* Una fuente más legible para párrafos */
-    opacity: 0.8;
+    margin-bottom: 30px; /* Espacio abajo del párrafo para que el botón respire */
+    color: #ccc;
 }
 
-/* Contenedor de la Imagen - ACTUALIZADO y CORREGIDO */
 .hero-image {
-    flex: 0 0 40%; /* NO se estira, NO se encoge, ocupa el 40% del ancho */
-    max-width: 450px; /* Ancho máximo para que no sea gigante en pantallas enormes */
+    flex: 1;
     display: flex;
-    justify-content: center; /* Centra la imagen DENTRO de su 40% */
+    justify-content: flex-end; /* Empuja la imagen totalmente a la derecha */
 }
 
 .hero-image img {
-    width: 100%; /* La imagen ocupa TODO el ancho de su contenedor (.hero-image) */
-    height: auto; /* Mantiene la proporción de la imagen */
-    border-radius: 4px; /* Un borde sutil */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Sombra para darle profundidad */
-    
-    /* Mantenemos la opacidad inicial para el JS */
-    opacity: 1; 
-    transition: opacity 0.1s ease-out; /* Suaviza el efecto del JS */
+    max-width: 450px; /* Ajusta este tamaño según tu imagen */
+    height: auto;
+    border-radius: 5px;
 }
-
 /* Botón - ACTUALIZADO (Lo movemos dentro del text-group en el HTML si quieres, o lo dejamos aquí) */
 .btn-main {
     padding: 15px 40px;
@@ -149,4 +144,94 @@ body {
 .card:hover {
     transform: translateY(-5px); /* Pequeño salto hacia arriba */
     background-color: #2a2a2a;
+}
+.nav-links a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #344eaa; /* Tu azul */
+    transition: width .3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+/* Configuración General de Secciones */
+.section-padding {
+    padding: 100px 10%;
+    text-align: center;
+}
+
+.alternate-bg {
+    background-color: #111;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    border-left: 5px solid #344eaa; /* Tu azul */
+    padding-left: 15px;
+    text-align: left;
+}
+
+/* Grid de Juegos */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.game-card {
+    height: 400px;
+    background-color: #222;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s;
+}
+
+.game-card:hover {
+    transform: scale(1.02);
+}
+
+.game-info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(transparent, black);
+    padding: 20px;
+    text-align: left;
+}
+
+/* Tienda */
+.shop-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.shop-item {
+    background: #1a1a1a;
+    padding: 30px;
+    width: 250px;
+    border-radius: 10px;
+}
+
+.item-img {
+    font-size: 4rem;
+    margin-bottom: 15px;
+}
+
+.btn-buy {
+    background: #344eaa;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-weight: bold;
 }
