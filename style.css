@@ -46,52 +46,64 @@ body {
     color: #344eaa; /* Tu nuevo Azul */
 }
 
-/* Hero Section */
+/* ... (Manten el Reset básico y la Navegación igual) ... */
+
+/* Hero Section - ACTUALIZADO */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), /* Oscurecemos un poco más el fondo para que resalte el contenido */
                 url('https://via.placeholder.com/1920x1080/0b0b0b/333333') no-repeat center center/cover; /* Un fondo gris oscuro de ejemplo */
     display: flex;
-    align-items: center;
-    padding: 0 50px; /* Padding a los lados */
+    align-items: center; /* Centra verticalmente el contenido */
+    padding: 0 10%; /* Usamos porcentaje para mejor adaptabilidad */
 }
 
 .hero-content {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between; /* Separa el texto de la imagen al máximo */
+    align-items: center; /* Centra verticalmente texto e imagen entre sí */
     width: 100%;
-    align-items: flex-start; /* Botón a la izquierda */
-}
-
-.hero-text-and-image {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 20px;
+    gap: 50px; /* Espacio de seguridad entre texto e imagen */
 }
 
 .text-group {
-    flex: 1; /* El texto ocupa el espacio disponible */
+    flex: 1; /* El texto ocupa el espacio que necesite */
+    max-width: 600px; /* Evitamos que el texto se estire demasiado en pantallas anchas */
 }
 
 .hero-content h1 {
     font-size: 4rem;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    line-height: 1.1; /* Ajustamos el interlineado para títulos grandes */
 }
 
-/* Contenedor de la Imagen */
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    font-family: sans-serif; /* Una fuente más legible para párrafos */
+    opacity: 0.8;
+}
+
+/* Contenedor de la Imagen - ACTUALIZADO y CORREGIDO */
 .hero-image {
-    flex: 1; /* La imagen también ocupa el espacio disponible */
-    text-align: right; /* Alinea la imagen a la derecha */
+    flex: 0 0 40%; /* NO se estira, NO se encoge, ocupa el 40% del ancho */
+    max-width: 450px; /* Ancho máximo para que no sea gigante en pantallas enormes */
+    display: flex;
+    justify-content: center; /* Centra la imagen DENTRO de su 40% */
 }
 
 .hero-image img {
-    max-width: 100%; /* La imagen no se sale de su contenedor */
-    height: auto;
-    border-radius: 8px; /* Un poco redondeada, estilo moderno */
+    width: 100%; /* La imagen ocupa TODO el ancho de su contenedor (.hero-image) */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 4px; /* Un borde sutil */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Sombra para darle profundidad */
+    
+    /* Mantenemos la opacidad inicial para el JS */
+    opacity: 1; 
+    transition: opacity 0.1s ease-out; /* Suaviza el efecto del JS */
 }
 
+/* Botón - ACTUALIZADO (Lo movemos dentro del text-group en el HTML si quieres, o lo dejamos aquí) */
 .btn-main {
     padding: 15px 40px;
     background-color: white;
@@ -99,17 +111,17 @@ body {
     border: none;
     cursor: pointer;
     font-weight: bold;
-    transition: background 0.3s, transform 0.2s; /* Un pequeño efecto al pulsar */
+    font-size: 1rem;
+    transition: all 0.3s ease;
 }
 
 .btn-main:hover {
-    background-color: #344eaa; /* Tu nuevo Azul */
+    background-color: #344eaa; /* Tu Azul */
     color: white;
+    transform: translateY(-3px); /* Pequeño efecto de flotar */
 }
 
-.btn-main:active {
-    transform: scale(0.95); /* Efecto de pulsar */
-}
+/* ... (Manten las Noticias igual) ... */
 
 /* Noticias */
 .news-section {
