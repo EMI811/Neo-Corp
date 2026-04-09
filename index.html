@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoCorp</title>
+    <title>NeoCorp | Future Systems</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+    <div id="preloader">
+    <div class="loader-content">
+        <div class="loader-logo">NEOCORP</div>
+        <div class="loader-bar">
+            <div class="progress"></div>
+        </div>
+        <p class="loader-status">INICIALIZANDO SISTEMAS...</p>
+    </div>
+</div>
     <nav class="navbar">
         <div class="logo">NeoCorp</div>
         <ul class="nav-links">
-            <li><a href="#juegos">Juegos</a></li>
+            <li><a href="#juegos">Proyectos</a></li>
             <li><a href="#noticias">Noticias</a></li>
-            <li><a href="#videos">Videos</a></li>
             <li><a href="#tienda">Tienda</a></li>
         </ul>
     </nav>
@@ -23,65 +30,98 @@
         <div class="hero-content">
             <div class="text-group">
                 <h1>NeoIntelligence</h1>
-                <p>Nueva y única.</p>
+                <p>La evolución de la interacción digital.</p>
                 <a href="#DESCRIPCION" class="btn-main">DESCRIPCIÓN</a>
             </div>
             <div class="hero-image">
-                <img src="intelligence.png" alt="NeoIntelligence">
+                <img src="intelligence.png" alt="NeoIntelligence" id="heroImg">
             </div>
         </div>
     </header>
 
-   <section id="juegos" class="section-padding">
-    <h2 class="section-title reveal">Familia NeoCorp</h2> <div class="games-grid">
-        <div class="game-card reveal" style="background-image: url('NeoSim.png');"> 
-            <div class="game-info"><h3>NeoSim</h3>
-                <p>Simulación de sistemas complejos.</p> </div>
+    <section id="juegos" class="section-padding">
+        <h2 class="section-title reveal">Familia NeoCorp</h2>
+        <div class="games-grid">
+            <div class="game-card reveal" style="background-image: url('NeoSim.png');"> 
+                <div class="game-info">
+                    <h3>NeoSim</h3>
+                    <p>Simulación de sistemas complejos.</p> 
+                </div>
             </div>
-            
+            <div class="game-card reveal" style="background-image: url('intelligence.png');">
+                 <div class="game-info">
+                     <h3>NeoIntelligence</h3>
+                     <p>IA de alto rendimiento.</p>
+                </div>
+            </div>
+            <div class="game-card reveal" style="background-image: url('img/juego3.jpg');"> 
+                <div class="game-info">
+                    <h3>NeoAI</h3>
+                    <p>Procesamiento neuronal avanzado.</p>
+                </div>
+            </div>
         </div>
-        <div class="game-card reveal" style="background-image: url('intelligence.png');">
-             <div class="game-info"><h3>NeoIntelligence</h3>
-            </div>
+    </section>
+
+    <section id="DESCRIPCION" class="section-padding alternate-bg">
+        <h2 class="section-title reveal">Sobre NeoIntelligence</h2> 
+        <p class="reveal description-text">Nuestra arquitectura redefine los límites de la inteligencia artificial, fusionando velocidad y diseño minimalista en un solo núcleo.</p> 
+    </section>
+
+<section id="ecosistema" class="section-padding reveal">
+    <h2 class="section-title">UNIVERSAL ECOSYSTEM</h2>
+    <div class="eco-grid">
+        <div class="eco-item engine-highlight">
+            <span class="eco-icon">⚙️</span>
+            <h3>NeoEngine</h3>
+            <p>El motor gráfico de próxima generación para experiencias hiperrealistas.</p>
+            <a href="#" class="btn-install">INSTALAR ENGINE</a>
         </div>
-        <div class="game-card reveal" style="background-image: url('img/juego3.jpg');"> 
-            <div class="game-info"><h3>NeoAI</h3>
-            </div>
+
+        <div class="eco-item">
+            <span class="eco-icon">🏠</span>
+            <h3>NeoHome</h3>
+            <p>Gadgets inteligentes que aprenden de tus hábitos.</p>
+        </div>
+
+        <div class="eco-item">
+            <span class="eco-icon">🌐</span>
+            <h3>NeoNet</h3>
+            <p>Servicios de red ultra-rápidos y seguridad cuántica.</p>
+        </div>
+
+        <div class="eco-item">
+            <span class="eco-icon">⚡</span>
+            <h3>NeoPower</h3>
+            <p>Sistemas de energía modular para hardware NeoCorp.</p>
         </div>
     </div>
 </section>
 
- <section id="DESCRIPCION" class="section-padding alternate-bg">
-    <h2 class="section-title reveal">Sobre NeoIntelligence</h2> 
-    <p class="reveal">Aquí va la descripción detallada de tu nueva inteligencia.</p> 
-</section>
-<section id="tienda" class="section-padding">
-    <h2 class="section-title reveal">Tienda</h2> <div class="shop-grid">
-        <div class="shop-item reveal"> <div class="item-img">📦</div>
-            <p>Neo Product - $--</p>
-            <button class="btn-buy">Comprar</button>
+    <section id="tienda" class="section-padding">
+        <h2 class="section-title reveal">NeoCorp Store</h2>
+        <div class="shop-grid">
+            <div class="shop-item reveal">
+                <div class="item-img">📦</div>
+                <p>Neo Core Module</p>
+                <span>Coming Soon</span>
+                <button class="btn-buy">Pre-order</button>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="noticias" class="news-section">
-    <h2 class="reveal">Últimas Noticias</h2> <div class="news-grid">
-        <div class="card reveal">Noticia 1</div>
-         <div class="card reveal">Noticia 2</div> 
-         <div class="card reveal">Noticia 3</div> 
-        </div>
-</section>
-    <script src="script.js"></script>
     <footer class="main-footer">
-    <div class="footer-content">
-        <div class="footer-logo">NeoCorp</div>
-        <p>© 2026 NeoCorp Systems. Todos los derechos reservados.</p>
-        <div class="social-links">
-            <a href="#">X</a>
-            <a href="#">Instagram</a>
-            <a href="#">YouTube</a>
+        <div class="footer-content">
+            <div class="footer-logo">NeoCorp</div>
+            <p>© 2026 NeoCorp Systems. Prototyping the future.</p>
+            <div class="social-links">
+                <a href="#">X</a>
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

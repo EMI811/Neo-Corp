@@ -1,350 +1,344 @@
-/* Reset básico */
+/* --- FUNDAMENTOS --- */
+:root {
+    --accent: #344eaa;
+    --bg: #0b0b0b;
+    --glass: rgba(11, 11, 11, 0.75);
+}
+
 * {
-    margin: 0;
-    padding: 0;
+    margin: 0; 
+    padding: 0; 
     box-sizing: border-box;
-    font-family: 'Arial Black', sans-serif; /* Puedes cambiar esto por una fuente personalizada más tarde */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
-    background-color: #0b0b0b;
+    background-color: var(--bg);
     color: white;
+    overflow-x: hidden;
+    line-height: 1.6;
 }
 
-/* Navegación */
+/* --- NAVEGACIÓN (APPLE STYLE) --- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;
-    background-color: rgba(0, 0, 0, 0.9);
+    padding: 20px 10%;
     position: fixed;
-    width: 100%;
+    top: 0; width: 100%;
     z-index: 1000;
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar.scrolled {
+    padding: 12px 10%;
+    background: rgba(0, 0, 0, 0.9);
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #344eaa; /* Tu nuevo Azul */
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--accent);
+    letter-spacing: -1px;
+    text-shadow: 0 0 15px rgba(52, 78, 170, 0.3);
 }
 
 .nav-links {
+    display: flex; 
+    gap: 30px; 
     list-style: none;
-    display: flex;
-    gap: 20px;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: white;
-    font-size: 0.9rem;
-    transition: color 0.3s;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: 0.3s;
 }
 
-.nav-links a:hover {
-    color: #344eaa; /* Tu nuevo Azul */
-}
+.nav-links a:hover { color: white; }
 
-/* ... (Manten el Reset básico y la Navegación igual) ... */
-
-/* Hero Section - ACTUALIZADO */
+/* --- HERO --- */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), /* Oscurecemos un poco más el fondo para que resalte el contenido */
-                url('https://via.placeholder.com/1920x1080/0b0b0b/333333') no-repeat center center/cover; /* Un fondo gris oscuro de ejemplo */
     display: flex;
-    align-items: center; /* Centra verticalmente el contenido */
-    padding: 0 10%; /* Usamos porcentaje para mejor adaptabilidad */
+    align-items: center;
+    padding: 0 10%;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #0b0b0b 100%);
 }
-/* Este es el contenedor grande que divide IZQUIERDA (texto) y DERECHA (imagen) */
+
 .hero-content {
     display: flex;
-    flex-direction: row; /* Asegura que el grupo de texto e imagen estén lado a lado */
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
+    align-items: center;
+    justify-content: space-between;
 }
 
-/* Este es el grupo que envuelve el H1, el P y el Botón */
-.text-group {
-    display: flex;
-    flex-direction: column; /* ¡ESTA ES LA CLAVE! Pone los elementos uno arriba del otro */
-    align-items: flex-start; /* Alinea el texto y botón a la izquierda */
-    flex: 1;
-    max-width: 50%; /* Para que no invada el espacio de la imagen */
+.text-group { flex: 1; max-width: 500px; }
+
+h1 {
+    font-size: clamp(3rem, 8vw, 5rem);
+    line-height: 0.9;
+    letter-spacing: -3px;
+    margin-bottom: 20px;
 }
 
-.hero-content h1 {
-    font-size: 4rem;
-    margin-bottom: 10px; /* Espacio abajo del título */
-    color: white;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 30px; /* Espacio abajo del párrafo para que el botón respire */
-    color: #ccc;
-}
-
-.hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end; /* Empuja la imagen totalmente a la derecha */
-}
-
-.hero-image img {
-    max-width: 450px; /* Ajusta este tamaño según tu imagen */
-    height: auto;
-    border-radius: 5px;
-}
-/* Botón - ACTUALIZADO (Lo movemos dentro del text-group en el HTML si quieres, o lo dejamos aquí) */
-
-/* Aseguramos que el enlace se comporte como un botón */
 .btn-main {
-    display: inline-block; /* Importante para que acepte padding */
-    text-decoration: none; /* Quita el subrayado del link */
-    padding: 15px 40px;
-    background-color: white;
+    display: inline-block;
+    padding: 14px 35px;
+    background: white;
     color: black;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    text-align: center;
-}
-.btn-main:hover {
-    background-color: #344eaa; /* Tu Azul */
-    color: white;
-    transform: translateY(-3px); /* Pequeño efecto de flotar */
-}
-
-/* ... (Manten las Noticias igual) ... */
-
-/* Noticias */
-.news-section {
-    padding: 50px;
-}
-
-.news-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    text-decoration: none;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: 0.4s;
     margin-top: 20px;
 }
 
-.card {
-    background-color: #1a1a1a;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    border: 1px solid #333;
-    transition: transform 0.3s, background-color 0.3s;
+.btn-main:hover {
+    background: var(--accent);
+    color: white;
+    transform: scale(1.05);
 }
 
-.card:hover {
-    transform: translateY(-5px); /* Pequeño salto hacia arriba */
-    background-color: #2a2a2a;
-}
-.nav-links a::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 2px;
-    background: #344eaa; /* Tu azul */
-    transition: width .3s;
+.hero-image img {
+    max-width: 500px;
+    height: auto;
+    filter: drop-shadow(0 0 50px rgba(52, 78, 170, 0.2));
 }
 
-.nav-links a:hover::after {
-    width: 100%;
-}
-/* Configuración General de Secciones */
-.section-padding {
-    padding: 100px 10%;
+/* --- SECCIONES --- */
+.section-padding { padding: 120px 10%; }
+
+.section-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    color: var(--accent);
+    margin-bottom: 60px;
     text-align: center;
 }
 
-.alternate-bg {
-    background-color: #111;
-}
+.alternate-bg { background-color: #050505; }
 
-.section-title {
-    font-size: 2.5rem;
-    margin-bottom: 50px;
-    border-left: 5px solid #344eaa; /* Tu azul */
-    padding-left: 15px;
-    text-align: left;
-}
-
-/* Grid de Juegos */
+/* --- GRIDS --- */
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-/* Grid de Juegos - MEJORADO */
-.games-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px; /* Un poco más de espacio */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
 }
 
 .game-card {
-    height: 400px;
-    background-color: #222;
+    height: 450px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
     background-size: cover;
     background-position: center;
-    position: relative;
-    overflow: hidden; /* Importante para que el zoom no se salga */
-    cursor: pointer;
-    border-radius: 8px;
-    transition: all 0.5s ease; /* Transición para la tarjeta entera */
 }
 
-/* Efecto al pasar el mouse sobre la tarjeta */
-.game-card:hover {
-    transform: translateY(-10px); /* Sube un poco */
-    box-shadow: 0 15px 40px rgba(52, 78, 170, 0.4); /* Brillo azul */
-}
-
-/* Efecto de Zoom sobre la imagen de fondo */
 .game-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: inherit; /* Hereda la imagen de la tarjeta */
-    background-size: cover;
-    background-position: center;
-    transition: transform 0.6s ease; /* Transición suave del zoom */
-    z-index: 1; /* Detrás del texto */
-}
-
-.game-card:hover::before {
-    transform: scale(1.1); /* Zoom de la imagen */
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+    transition: 0.5s;
 }
 
 .game-info {
     position: absolute;
-    bottom: 0;
-    width: 100%;
-    /* Gradiente negro intenso abajo para leer bien el texto */
-    background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 60%, transparent 100%);
-    padding: 30px;
-    text-align: left;
-    z-index: 2; /* Delante de la imagen */
-    transition: background 0.5s ease;
+    bottom: 0; padding: 30px;
+    transition: 0.5s;
 }
 
-.game-card h3 {
-    font-size: 1.8rem;
-    color: white;
-    margin-bottom: 5px;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
-}
+.game-card:hover::before { background: rgba(52, 78, 170, 0.2); }
+.game-info p { opacity: 0; transform: translateY(10px); transition: 0.4s; }
+.game-card:hover .game-info p { opacity: 1; transform: translateY(0); }
 
-/* Opcional: Subtítulo o botón que aparece al hover */
-.game-info p {
-    font-size: 1rem;
-    color: #ccc;
-    opacity: 0; /* Invisible por defecto */
-    transform: translateY(20px); /* Un poco abajo */
-    transition: all 0.5s ease;
-}
-
-.game-card:hover .game-info p {
-    opacity: 1; /* Visible */
-    transform: translateY(0); /* En su sitio */
-}
-
-/* Tienda */
-.shop-grid {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.shop-item {
-    background: #1a1a1a;
-    padding: 30px;
-    width: 250px;
-    border-radius: 10px;
-}
-
-.item-img {
-    font-size: 4rem;
-    margin-bottom: 15px;
-}
-
-.btn-buy {
-    background: #344eaa;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin-top: 15px;
-    cursor: pointer;
-    font-weight: bold;
-}
-.logo {
-    font-size: 1.8rem;
-    letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(52, 78, 170, 0.5); /* Sombra con tu azul */
-    transition: all 0.3s ease;
-    cursor: default;
-}
-
-.logo:hover {
-    color: #fff;
-    text-shadow: 0 0 20px #344eaa, 0 0 30px #344eaa;
-}
-/* --- ANIMACIONES DE REVELACIÓN (SCROLL) --- */
-
-/* 1. Estado Inicial: Elementos invisibles y 50px abajo */
+/* --- REVEAL ANIMATION --- */
 .reveal {
     opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s ease-out; /* Duración de la animación: 1 segundo */
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* 2. Estado Final: Elementos visibles y en su sitio */
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Opcional: Un pequeño retraso para que los elementos aparezcan secuencialmente (efecto cascada) */
-.reveal:nth-child(2) { transition-delay: 0.2s; }
-.reveal:nth-child(3) { transition-delay: 0.4s; }
+/* --- FOOTER --- */
 .main-footer {
-    padding: 50px 10%;
-    background-color: #050505;
-    border-top: 1px solid #1a1a1a;
+    padding: 80px 10% 40px;
+    border-top: 1px solid rgba(255,255,255,0.05);
     text-align: center;
 }
-
-.footer-logo {
-    color: #344eaa;
-    font-weight: bold;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+/* --- PRELOADER --- */
+#preloader {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: #0b0b0b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Por encima de TODO */
+    transition: opacity 0.8s ease, visibility 0.8s;
 }
 
-.social-links a {
+.loader-content { text-align: center; }
+
+.loader-logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #344eaa;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    animation: pulse 1.5s infinite;
+}
+
+.loader-bar {
+    width: 200px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto 10px;
+}
+
+.progress {
+    width: 0;
+    height: 100%;
+    background: #344eaa;
+    animation: load 2s forwards ease-in-out;
+}
+
+.loader-status {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Animaciones */
+@keyframes load {
+    0% { width: 0%; }
+    50% { width: 70%; }
+    100% { width: 100%; }
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Clase para ocultar el loader */
+#preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+:root {
+    --bg-dark: #000000;      /* Negro puro, ahorro de energía y elegancia */
+    --text-main: #ffffff;    /* Blanco puro para títulos */
+    --text-dim: #a1a1a1;     /* Gris Apple para descripciones */
+    --accent-blue: #344eaa;  /* El núcleo de NeoCorp */
+}
+
+/* El Hero con un degradado de "Luz de Luna" */
+.hero {
+    background: radial-gradient(circle at 70% 30%, #1a1a1a 0%, #000000 100%);
+}
+
+/* Tarjetas con estilo "White Ghost" al pasar el mouse */
+.game-card:hover {
+    border: 1px solid rgba(255, 255, 255, 0.8); /* Borde blanco brillante */
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+/* Botones con inversión de color (Efecto Apple) */
+.btn-main {
+    background-color: #ffffff;
+    color: #000000;
+    mix-blend-mode: screen; /* Esto hace que el botón "interactúe" con el fondo */
+}
+.eco-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.eco-item {
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+}
+
+.eco-item:hover {
+    border-top: 1px solid var(--accent);
+}
+
+.eco-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 20px;
+    filter: grayscale(1); /* Minimalismo Apple */
+    transition: 0.3s;
+}
+
+.eco-item:hover .eco-icon {
+    filter: grayscale(0); /* Al pasar el mouse, "cobra vida" */
+}
+
+.eco-item h3 {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.eco-item p {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+}
+/* Resaltar NeoEngine */
+.engine-highlight {
+    background: linear-gradient(145deg, #111, #000);
+    border: 1px solid rgba(52, 78, 170, 0.3) !important;
+    border-radius: 15px;
+    padding: 30px !important;
+}
+
+.btn-install {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 20px;
+    background-color: var(--accent); /* Tu azul #344eaa */
     color: white;
     text-decoration: none;
-    margin: 0 15px;
-    font-size: 0.8rem;
-    opacity: 0.6;
-    transition: opacity 0.3s;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
 }
 
-.social-links a:hover {
-    opacity: 1;
-    color: #344eaa;
+.btn-install:hover {
+    background-color: white;
+    color: black;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Ajuste general para los iconos del ecosistema */
+.eco-icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    display: block;
 }
