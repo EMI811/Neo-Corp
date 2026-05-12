@@ -18,6 +18,17 @@ body {
     overflow-x: hidden;
     line-height: 1.6;
 }
+/* Bloquear selección de texto en toda la web */
+body {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none;      /* IE 10 y superior */
+  user-select: none;          /* Estándar (Chrome, Firefox, Opera) */
+}
+
+/* Si quieres que los campos de texto SÍ se puedan usar */
+input, textarea {
+  user-select: text;
+}
 
 /* --- NAVEGACIÓN (APPLE STYLE) --- */
 .navbar {
